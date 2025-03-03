@@ -23,3 +23,19 @@ loader = SimpleDirectoryReader(
             recursive=True
         )
 docs = loader.load_data()
+
+
+from llama_index.vector_stores.qdrant import QdrantVectorStore
+from llama_index.core import VectorStoreIndex, ServiceContext, StorageContext
+
+def create_index(documents):
+
+    vector_store = QdrantVectorStore(client=client,
+                                     collection_name=collection_name)
+    
+    storage_context = StorageContext.from_defaults(vector_store=vector_store)
+    
+    index = VectorStoreIndex.from_documents(documents,
+                                            storage_context=storage_context)
+    
+    return index
