@@ -15,6 +15,8 @@ from llama_index.core import SimpleDirectoryReader
 
 input_dir_path = './docs'
 
+print("ABC")
+
 loader = SimpleDirectoryReader(
             input_dir = input_dir_path,
             required_exts=[".pdf"],
